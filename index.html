@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f4f8fc">
+<meta name="description" content="防晕车 — 用动态视觉引导悬浮点平衡感官信号，减轻晕车不适。">
+<title>防晕车 · 视觉引导</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <canvas id="scene" aria-hidden="true"></canvas>
+  <div class="vignette" aria-hidden="true"></div>
+
+  <header class="hud">
+    <span class="mark" aria-hidden="true"></span>
+    <span class="brand">防晕车</span>
+  </header>
+
+  <div class="hint" id="hint">视线轻落光点 · 跟随呼吸，让感官慢慢对齐</div>
+
+  <div class="controls" id="controls">
+    <span class="status" id="status">等待感应</span>
+    <div class="divider"></div>
+    <label class="slider-wrap"><span class="slider-label">灵敏度</span>
+      <input id="sens" type="range" min="0.4" max="2" step="0.1" value="1" aria-label="灵敏度">
+      <span id="sens-val">1.0×</span>
+    </label>
+    <div class="divider"></div>
+    <button type="button" class="btn icon" id="cal" title="校准零点" aria-label="校准零点" disabled>
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="6.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
+    </button>
+    <button type="button" class="btn icon" id="breath" title="呼吸引导开关" aria-label="呼吸引导开关">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 3c4.5 0 7 3.2 7 5M12 21c-4.5 0-7-3.2-7-5"/></svg>
+    </button>
+    <button type="button" class="btn icon" id="pause" title="暂停 / 继续" aria-label="暂停">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M9 6v12M15 6v12"/></svg>
+    </button>
+    <button type="button" class="btn icon" id="fs" title="全屏" aria-label="全屏">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
+    </button>
+  </div>
+
+  <div class="footer" id="footer">
+    <span class="notice">本站内容仅供学习和交流，非商业用途</span>
+    <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">浙ICP备2025187466号</a>
+    <a class="police" href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33030402001483" target="_blank" rel="noopener noreferrer"><img src="https://www.937788.xyz/gonganbeian.png" alt="">浙公网安备33030402001483号</a>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <div class="intro" id="intro">
+    <div class="card">
+      <h1>防晕车</h1>
+      <p class="en">让视觉与身体重新对齐</p>
+      <p class="body">乘车时，眼睛看到相对静止的车内，内耳却感受到加速与晃动。两套信号不一致，晕车就这样开始了。</p>
+      <p class="body">防晕车让悬浮点、地平线与微粒场随车辆的真实运动一起漂移，给大脑提供它期待的视觉信号，减轻感官冲突。</p>
+      <div class="tip">请在带传感器的手机浏览器中使用。将手机固定在车内或稳稳握住，视线轻柔地落在光点上，跟随它自然呼吸。首次使用需授权运动与方向传感器。</div>
+      <div class="actions">
+        <button type="button" class="primary" id="start-sensor">开启感应引导</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
